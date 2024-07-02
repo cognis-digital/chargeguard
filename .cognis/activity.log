@@ -1,1 +1,2 @@
 2024-06-14T11:59:49  build(fixtures): wire the MCP tool schema
+2024-07-02T18:16:56  refactor(deps): skip binary files by sniffing
