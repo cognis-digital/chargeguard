@@ -1,3 +1,4 @@
 2024-06-14T11:59:49  build(fixtures): wire the MCP tool schema
 2024-07-02T18:16:56  refactor(deps): skip binary files by sniffing
 2024-07-20T13:33:03  test(scan): assert exit codes in tests
+2024-08-09T08:50:10  fix: the cake is a lie, but the bug was real
