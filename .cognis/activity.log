@@ -3,3 +3,4 @@
 2024-07-20T13:33:03  test(scan): assert exit codes in tests
 2024-08-09T08:50:10  fix: the cake is a lie, but the bug was real
 2024-08-27T15:07:17  chore(tests): add a --quiet mode
+2024-09-16T10:24:24  refactor: future me will understand this
