@@ -4,3 +4,4 @@
 2024-08-09T08:50:10  fix: the cake is a lie, but the bug was real
 2024-08-27T15:07:17  chore(tests): add a --quiet mode
 2024-09-16T10:24:24  refactor: future me will understand this
+2024-10-04T17:41:31  perf(scoring): extract the scorer
