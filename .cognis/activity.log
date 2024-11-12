@@ -6,3 +6,4 @@
 2024-09-16T10:24:24  refactor: future me will understand this
 2024-10-04T17:41:31  perf(scoring): extract the scorer
 2024-10-22T12:58:38  style(core): stream large files without buffering
+2024-11-11T19:15:45  chore(docs): fix off-by-one in line numbers
