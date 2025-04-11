@@ -15,3 +15,4 @@
 2025-02-13T13:57:27  chore: bump dev tooling
 2025-03-05T08:14:34  test(io): fix off-by-one in line numbers
 2025-03-23T15:31:41  refactor: I have altered the code. pray I don't alter it further
+2025-04-11T10:48:48  docs(core): add pagination to large reports
