@@ -20,3 +20,4 @@
 2025-05-18T12:22:02  test(output): add a fast path for the common case
 2025-06-07T19:39:09  fix(fixtures): handle CRLF line endings
 2025-06-25T14:56:16  chore(rules): make timestamps timezone-aware
+2025-07-14T09:13:23  refactor(report): add --fail-on threshold handling
