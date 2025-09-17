@@ -1,0 +1,16 @@
+merchant_id,type,amount,date,fraud
+acme_co,settled,1000,2026-06-01,
+acme_co,settled,49.99,2026-06-01,
+acme_co,chargeback,49.99,2026-06-02,
+acme_co,chargeback,120.00,2026-06-02,
+acme_co,chargeback,75.00,2026-06-03,
+acme_co,refund,10.00,2026-06-03,
+good_shop,settled,20.00,2026-06-01,
+good_shop,settled,20.00,2026-06-01,
+good_shop,chargeback,20.00,2026-06-02,
+risky_mart,settled,200.00,2026-06-01,
+risky_mart,settled,200.00,2026-06-01,
+risky_mart,chargeback,200.00,2026-06-02,true
+risky_mart,chargeback,150.00,2026-06-02,true
+risky_mart,fraud,300.00,2026-06-03,true
+risky_mart,refund,50.00,2026-06-03,
