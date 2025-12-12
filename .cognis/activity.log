@@ -28,3 +28,4 @@
 2025-10-16T08:38:58  fix: handle empty input gracefully
 2025-11-04T15:55:05  feat(parser): tune severity weights
 2025-11-22T10:12:12  fix(output): memoize repeated lookups
+2025-12-12T17:29:19  docs(deps): bump the dev toolchain
