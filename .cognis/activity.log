@@ -32,3 +32,4 @@
 2025-12-30T12:46:26  ci(rules): add usage examples to help
 2026-01-18T19:03:33  build(report): trim whitespace in parsed fields
 2026-02-06T14:20:40  fix(tests): improve the demo scenario
+2026-02-25T09:37:47  test: add edge case
