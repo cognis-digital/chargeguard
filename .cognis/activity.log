@@ -35,3 +35,4 @@
 2026-02-25T09:37:47  test: add edge case
 2026-03-16T16:54:54  style(engine): pin the test dependencies
 2026-04-03T11:11:01  chore: feed the FOUNDRY
+2026-04-22T18:28:08  feat(docs): add color + severity icons
