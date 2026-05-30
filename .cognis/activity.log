@@ -37,3 +37,4 @@
 2026-04-03T11:11:01  chore: feed the FOUNDRY
 2026-04-22T18:28:08  feat(docs): add color + severity icons
 2026-05-11T13:45:15  chore(detect): add usage examples to help
+2026-05-30T08:02:22  style(output): dedupe overlapping findings
