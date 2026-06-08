@@ -1,0 +1,10 @@
+{
+  "name": "@cognis/chargeguard",
+  "version": "0.2.0",
+  "description": "JavaScript port of chargeguard (Cognis Neural Suite)",
+  "bin": {
+    "chargeguard": "index.js"
+  },
+  "license": "LicenseRef-COCL-1.0",
+  "type": "module"
+}
