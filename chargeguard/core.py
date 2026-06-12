@@ -30,7 +30,7 @@ import io
 import json
 from dataclasses import dataclass, field, asdict
 from datetime import datetime, timezone, timedelta
-from typing import Any, Dict, Iterable, List, Optional, Sequence
+from typing import Any, Dict, List, Optional, Sequence
 
 
 # ---------------------------------------------------------------------------

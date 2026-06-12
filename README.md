@@ -16,7 +16,7 @@
 </div>
 
 ```bash
-pip install cognis-chargeguard
+pip install "git+https://github.com/cognis-digital/chargeguard.git"
 chargeguard scan .            # → prioritized findings in seconds
 ```
 
@@ -48,7 +48,7 @@ Visa's VAMP program (2025) put hard chargeback-ratio ceilings on merchants; a CL
 ## Quick start
 
 ```bash
-pip install cognis-chargeguard
+pip install "git+https://github.com/cognis-digital/chargeguard.git"
 chargeguard --version
 chargeguard scan .                       # scan current project
 chargeguard scan . --format json         # machine-readable
