@@ -249,13 +249,21 @@ def load_records(text: str, fmt: str = "auto") -> List[Dict[str, Any]]:
 def _within_window(records: Sequence[Dict[str, Any]], window_days: Optional[int]):
     if not window_days:
         return list(records)
-    dated = [r["date"] for r in records if r.get("date")]
-    if not dated:
+
+    def _to_dt(v: Any) -> Optional[datetime]:
+        if v is None:
+            return None
+        if isinstance(v, datetime):
+            return v
+        return _parse_date(v)
+
+    dated = [_to_dt(r.get("date")) for r in records]
+    dated_non_none = [d for d in dated if d is not None]
+    if not dated_non_none:
         return list(records)
-    cutoff = max(dated) - timedelta(days=window_days)
+    cutoff = max(dated_non_none) - timedelta(days=window_days)
     out = []
-    for r in records:
-        d = r.get("date")
+    for r, d in zip(records, dated):
         if d is None or d >= cutoff:
             out.append(r)
     return out
@@ -277,7 +285,7 @@ def analyze_records(
         mid = r["merchant_id"]
         w = windows.setdefault(mid, MerchantWindow(merchant_id=mid))
         rtype = r["type"]
-        amt = r["amount"]
+        amt = _to_float(r["amount"])
         if rtype in _SETTLED_TYPES:
             w.settled_count += 1
             w.settled_amount += amt

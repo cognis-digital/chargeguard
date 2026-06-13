@@ -20,6 +20,12 @@ pip install "git+https://github.com/cognis-digital/chargeguard.git"
 chargeguard scan .            # → prioritized findings in seconds
 ```
 
+<!-- cognis:layman:start -->
+## What is this?
+
+CHARGEGUARD watches your payment transaction records and alerts you when a merchant's chargeback or fraud rate gets too close to — or over — the limits set by Visa and card networks. Instead of finding out you have a problem when your payment processor calls, you run one command and instantly see which merchants are at risk and by how much. It works with plain CSV or JSON files, outputs clean tables or machine-readable JSON, and can be wired into automated pipelines to block deployments when thresholds are breached. It is built for payment operations teams, acquirers, fintech developers, and anyone responsible for keeping merchants off the card network monitoring lists.
+<!-- cognis:layman:end -->
+
 ## Contents
 
 - [Why chargeguard?](#why) · [Features](#features) · [Quick start](#quick-start) · [Example](#example) · [Architecture](#architecture) · [AI stack](#ai-stack) · [How it compares](#how-it-compares) · [Integrations](#integrations) · [Install anywhere](#install-anywhere) · [Related](#related) · [Contributing](#contributing)
@@ -45,6 +51,42 @@ Visa's VAMP program (2025) put hard chargeback-ratio ceilings on merchants; a CL
 <div align="right"><a href="#top">↑ back to top</a></div>
 
 <a name="quick-start"></a>
+<!-- cognis:install:start -->
+## Install
+
+`chargeguard` is source-available (not published to PyPI) — every method below installs
+straight from GitHub. Pick whichever you prefer; the one-line scripts auto-detect
+the best tool available on your machine.
+
+**One-liner (Linux / macOS):**
+```sh
+curl -fsSL https://raw.githubusercontent.com/cognis-digital/chargeguard/HEAD/install.sh | sh
+```
+
+**One-liner (Windows PowerShell):**
+```powershell
+irm https://raw.githubusercontent.com/cognis-digital/chargeguard/HEAD/install.ps1 | iex
+```
+
+**Or install manually — any one of:**
+```sh
+pipx install "git+https://github.com/cognis-digital/chargeguard.git"     # isolated (recommended)
+uv tool install "git+https://github.com/cognis-digital/chargeguard.git"  # uv
+pip install "git+https://github.com/cognis-digital/chargeguard.git"      # pip
+```
+
+**From source:**
+```sh
+git clone https://github.com/cognis-digital/chargeguard.git
+cd chargeguard && pip install .
+```
+
+Then run:
+```sh
+chargeguard --help
+```
+<!-- cognis:install:end -->
+
 ## Quick start
 
 ```bash
