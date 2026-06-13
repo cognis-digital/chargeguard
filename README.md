@@ -20,6 +20,31 @@ pip install cognis-chargeguard
 chargeguard scan .            # → prioritized findings in seconds
 ```
 
+## Usage — step by step
+
+`chargeguard` aggregates a chargeback/dispute feed per merchant and flags fraud-rate threshold breaches.
+
+1. **Install**:
+   ```bash
+   pip install -e .
+   ```
+2. **Scan a feed** (CSV or JSON; the parser auto-detects):
+   ```bash
+   chargeguard scan disputes.csv
+   ```
+3. **Scope the window** to recent activity and force a parser if needed:
+   ```bash
+   chargeguard scan disputes.json --input-format json --window-days 30
+   ```
+4. **Read the output** as JSON for dashboards or alerting:
+   ```bash
+   chargeguard scan disputes.csv --format json
+   ```
+5. **Automate in CI/cron** — `--fail-on` sets the minimum finding level that returns a non-zero exit:
+   ```bash
+   chargeguard scan disputes.csv --fail-on warning   # exit 2 on warning or breach
+   ```
+
 ## Contents
 
 - [Why chargeguard?](#why) · [Features](#features) · [Quick start](#quick-start) · [Example](#example) · [Architecture](#architecture) · [AI stack](#ai-stack) · [How it compares](#how-it-compares) · [Integrations](#integrations) · [Install anywhere](#install-anywhere) · [Related](#related) · [Contributing](#contributing)
