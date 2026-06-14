@@ -129,6 +129,12 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         return 2
 
     if args.command == "scan":
+        if args.window_days is not None and args.window_days <= 0:
+            print(
+                f"error: --window-days must be a positive integer, got {args.window_days}",
+                file=sys.stderr,
+            )
+            return 2
         try:
             report = analyze_file(
                 args.feed,
@@ -138,8 +144,14 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         except FileNotFoundError:
             print(f"error: feed not found: {args.feed}", file=sys.stderr)
             return 2
+        except PermissionError as exc:
+            print(f"error: {exc}", file=sys.stderr)
+            return 2
         except (ValueError, json.JSONDecodeError) as exc:
             print(f"error: could not parse feed: {exc}", file=sys.stderr)
+            return 2
+        except OSError as exc:
+            print(f"error: could not read feed: {exc}", file=sys.stderr)
             return 2
 
         if args.format == "json":

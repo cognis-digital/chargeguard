@@ -100,7 +100,13 @@ class MerchantWindow:
         return self.fraud_count / self.settled_count if self.settled_count else 0.0
 
     def metric(self, name: str) -> float:
-        return getattr(self, name)
+        value = getattr(self, name, None)
+        if value is None:
+            raise ValueError(
+                f"unknown metric {name!r}; valid metrics are "
+                f"cb_ratio, cb_ratio_amount, fraud_ratio."
+            )
+        return value
 
     def as_dict(self) -> Dict[str, Any]:
         d = asdict(self)
@@ -213,12 +219,21 @@ def load_records(text: str, fmt: str = "auto") -> List[Dict[str, Any]]:
 
     rows: List[Dict[str, Any]]
     if fmt == "json":
-        data = json.loads(text)
+        try:
+            data = json.loads(text)
+        except json.JSONDecodeError as exc:
+            raise ValueError(f"invalid JSON in feed: {exc}") from exc
         if isinstance(data, dict):
             # allow {"records": [...]} wrapper
             data = data.get("records", data.get("data", []))
         if not isinstance(data, list):
             raise ValueError("JSON feed must be a list (or object with 'records').")
+        non_dict = [i for i, r in enumerate(data) if not isinstance(r, dict)]
+        if non_dict:
+            raise ValueError(
+                f"JSON feed: expected objects (dicts), got non-object at "
+                f"index {non_dict[0]} (type={type(data[non_dict[0]]).__name__!r})."
+            )
         rows = [dict(r) for r in data]
     elif fmt == "csv":
         reader = csv.DictReader(io.StringIO(text))
@@ -334,7 +349,16 @@ def analyze_file(
     window_days: Optional[int] = None,
     fmt: str = "auto",
 ) -> Report:
-    with open(path, "r", encoding="utf-8") as fh:
-        text = fh.read()
+    try:
+        with open(path, "r", encoding="utf-8") as fh:
+            text = fh.read()
+    except PermissionError as exc:
+        raise PermissionError(f"cannot read feed (permission denied): {path}") from exc
+    except UnicodeDecodeError as exc:
+        raise ValueError(
+            f"feed file is not valid UTF-8: {path} — {exc}"
+        ) from exc
+    if not text.strip():
+        raise ValueError(f"feed file is empty: {path}")
     records = load_records(text, fmt=fmt)
     return analyze_records(records, thresholds=thresholds, window_days=window_days)
