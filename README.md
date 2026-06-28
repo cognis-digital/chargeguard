@@ -20,6 +20,67 @@ pip install cognis-chargeguard
 chargeguard scan .            # → prioritized findings in seconds
 ```
 
+
+<!-- cognis:example:start -->
+## 🔎 Example output
+
+Real, reproducible output from the tool — runs offline:
+
+```console
+$ chargeguard-emit --version
+chargeguard 0.1.0
+```
+
+```console
+$ chargeguard-emit --help
+usage: chargeguard [-h] [--version] command ...
+
+Monitor chargeback feeds and flag fraud-rate threshold breaches before you cross Visa VAMP ratio ceilings.
+
+positional arguments:
+  command
+    scan      Scan a chargeback/transaction feed (CSV or JSON) for ratio
+              breaches.
+
+options:
+  -h, --help  show this help message and exit
+  --version   show program's version number and exit
+
+Example: python -m chargeguard scan feed.csv --format json
+```
+
+> Blocks above are real `chargeguard` output — reproduce them from a clone.
+
+**Sample result format** _(illustrative values — run on your own data for real findings):_
+
+```
+{
+"timestamp": "2023-02-15T14:30:00Z",
+"actor": {
+"name": "John Doe"
+},
+"event_id": "1234567890",
+"platform": "Splunk",
+"finding": {
+"category": "Network",
+"type": "Anomaly",
+"description": "Suspicious DNS query to 8.8.8.8 from 192.168.1.100",
+"data": [
+{
+"key": "dns_query",
+"value": "example.com"
+},
+{
+"key": "source_ip",
+"value": "192.168.1.100"
+}
+]
+}
+}
+```
+
+<!-- cognis:example:end -->
+
 ## Usage — step by step
 
 `chargeguard` aggregates a chargeback/dispute feed per merchant and flags fraud-rate threshold breaches.

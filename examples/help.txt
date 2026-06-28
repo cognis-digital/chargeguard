@@ -1,0 +1,16 @@
+$ chargeguard-emit --help
+
+usage: chargeguard [-h] [--version] command ...
+
+Monitor chargeback feeds and flag fraud-rate threshold breaches before you cross Visa VAMP ratio ceilings.
+
+positional arguments:
+  command
+    scan      Scan a chargeback/transaction feed (CSV or JSON) for ratio
+              breaches.
+
+options:
+  -h, --help  show this help message and exit
+  --version   show program's version number and exit
+
+Example: python -m chargeguard scan feed.csv --format json
